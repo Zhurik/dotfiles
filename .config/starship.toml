@@ -1,0 +1,174 @@
+#overlay0 Get editor completions based on the config schema
+'$schema' = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# Which is equivalent to
+format = """
+[╭─](white)\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$docker_context\
+$python\
+$golang\
+$nodejs\
+$rust\
+$kubernetes\
+$line_break\
+[╰─](white)\
+$character
+"""
+
+right_format = """
+$cmd_duration
+"""
+
+continuation_prompt = '[❯❯ ](green)'
+
+#######
+# THEME
+#######
+
+palette = 'catppuccin_frappe'
+
+[palettes.catppuccin_frappe]
+rosewater = '#f2d5cf'
+flamingo = '#eebebe'
+pink = '#f4b8e4'
+mauve = '#ca9ee6'
+red = '#e78284'
+maroon = '#ea999c'
+peach = '#ef9f76'
+yellow = '#e5c890'
+green = '#a6d189'
+teal = '#81c8be'
+sky = '#99d1db'
+sapphire = '#85c1dc'
+blue = '#8caaee'
+lavender = '#babbf1'
+text = '#c6d0f5'
+subtext1 = '#b5bfe2'
+subtext0 = '#a5adce'
+overlay2 = '#949cbb'
+overlay1 = '#838ba7'
+overlay0 = '#737994'
+surface2 = '#626880'
+surface1 = '#51576d'
+surface0 = '#414559'
+base = '#303446'
+mantle = '#292c3c'
+crust = '#232634'
+
+#########
+# MODULES
+#########
+
+[directory]
+style = 'bold text bg:surface2'
+read_only_style = 'bold red bg:surface2'
+read_only = '  '
+format = '[](blue)[ ](bold crust bg:blue)[](blue bg:surface2)[ $path]($style)[$read_only]($read_only_style)[](surface2)'
+truncation_length = 4
+truncation_symbol = '…/'
+home_symbol = ' '
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+'Documents' = '󰈙 '
+'Downloads' = ' '
+'Music' = ' '
+'Pictures' = ' '
+# Keep in mind that the order matters. For example:
+# 'Important Documents' = ' 󰈙 '
+# will not be replaced, because 'Documents' was already substituted before.
+# So either put 'Important Documents' before 'Documents' or use the substituted version:
+# 'Important 󰈙 ' = ' 󰈙 '
+
+[git_branch]
+symbol = ""
+style = 'bold crust bg:green'
+format = '[-](white)[](green)[$symbol]($style)[](green bg:surface2)[ $branch](text bg:surface2)[](surface2 bg:green)'
+
+[git_status]
+style = 'bold crust bg:green'
+format = '([$all_status$ahead_behind]($style))[](green)'
+ahead = ' ⇡${count}'
+diverged = ' ⇡${ahead_count} ⇣${behind_count}'
+behind = ' ⇣${count}'
+conflicted = ' =${count}'
+untracked = ' ?${count}'
+stashed = ' \$${count}'
+modified = ' !${count}'
+staged = ' +${count}'
+renamed = ' »${count}'
+deleted = ' ✘${count}'
+
+[git_state]
+style = 'bold crust bg:green'
+format = '[ \($state( $progress_current/$progress_total)\)]($style)'
+
+[golang]
+symbol = ' '
+format = '[-](white)[](yellow)[$symbol](bold crust bg:yellow)[](yellow)'
+
+[helm]
+symbol = ' '
+style = 'base bg:blue'
+format = '[ $symbol ]($style)'
+
+[docker_context]
+# nf-fa-docker
+symbol = ' '
+format = '[-](white)[](yellow)[$symbol](bold crust bg:yellow)[](yellow)'
+
+[nodejs]
+# nf-fa-node_js
+symbol = ' '
+format = '[-](white)[](yellow)[$symbol](bold crust bg:yellow)[](yellow)'
+
+[python]
+# nf-fa-python
+symbol = ' '
+format = '[-](white)[](yellow)[$symbol](bold crust bg:yellow)[](yellow bg:surface2)[( $virtualenv)](text bg:surface2)[](surface2)'
+
+[rust]
+symbol = '󱘗 '
+format = '[-](white)[](yellow)[$symbol](bold crust bg:yellow)[](yellow)'
+
+[username]
+style_user = 'bold peach bg:surface2'
+format = '[$user ]($style)'
+
+[hostname]
+ssh_symbol = ' '
+format = '[$ssh_symbol$hostname ]($style)'
+style = ' bold peach bg:surface2'
+
+[localip]
+disabled = false
+style = 'peach bg:surface2'
+format = '[$localipv4 ]($style)'
+
+[cmd_duration]
+style = 'dimmed lavender'
+format = '[took $duration]($style)'
+
+[fill]
+symbol = '-'
+style = 'white'
+
+[kubernetes]
+symbol = '󱃾 '
+disabled = false
+format = "[-](white)[](teal)[$symbol](bold crust bg:teal)[](teal bg:surface2)[ $context]($style)[](surface2 bg:teal)[( $namespace)](crust bg:teal)[](teal)"
+style = 'text bg:surface2'
+detect_env_vars = ['KUBECONFIG']
+
+[[kubernetes.contexts]]
+context_pattern = '.*PROD.*'
+style = 'text bold bg:surface2'
+symbol = '󱃾 [ ](red bg:teal)'

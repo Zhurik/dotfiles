@@ -1,0 +1,77 @@
+alias k="kubectl"
+alias kx="kubectx"
+alias ku="kubens"
+alias kpo="kubectl get pods"
+alias kga="kubectl get all"
+
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# General
+alias ls="lsd"
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+alias grep="grep --color"
+
+alias clockz="clear && tty-clock -sc"
+
+alias plock="poetry lock --no-update --no-cache"
+
+alias wtf="~/giter -s ~/repos.json"
+
+choose_dev() {
+	export KUBECONFIG=~/.kube/config
+}
+
+choose_prod() {
+	old=$KUBECONFIG
+	new=$(ls ~/.kube/PROD/ | fzf)
+	if [ -z "${new}" ]; then
+		export KUBECONFIG=$old
+	else
+		export KUBECONFIG=~/.kube/PROD/$new
+	fi
+}
+
+alias cprod="choose_prod"
+alias cdev="choose_dev"
+
+choose_ssh() {
+	server=$(grep '^Host \w' ~/.ssh/config | cut -d ' ' -f 2 | fzf-tmux -p)
+	if [ -z "${server}" ]; then
+		echo Cancelled
+	else
+    echo Connecting to $server
+		ssh $server
+	fi
+}
+
+alias cssh="choose_ssh"
+
+gen_uuid() {
+	python3.11 -c "import uuid; print(uuid.uuid4())"
+}
+
+alias uuid="gen_uuid"
+
+# fzf-make
+# https://github.com/kyu08/fzf-make
+alias fm='fzf-make'
+alias fr='fzf-make repeat'
+alias fh='fzf-make history'
+
+decrypt() {
+  secret_name=$(kubectl get secrets --no-headers | cut -d ' ' -f 1 | fzf-tmux -p --select-1)
+
+  if [ -z "${secret_name}" ]; then
+		echo Cancelled
+    return
+	fi
+
+  kubectl get secrets $secret_name -ojson \
+    | jq -r '.data | to_entries[] | "\(.key) \(.value)"' \
+    | xargs -n 2 sh -c 'echo "$0 $(echo $1 | base64 -d)"' \
+    | tabulate -f rounded_grid
+}
