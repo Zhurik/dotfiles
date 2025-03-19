@@ -1,0 +1,4 @@
+theme = catppuccin-frappe
+font-family = IosevkaTerm NF
+font-size = 16
+shell-integration = zsh

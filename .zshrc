@@ -7,8 +7,8 @@ export GONOPROXY="*.sbercloud.tech,*.sbercloud.dev"
 export GONOSUMDB="*.sbercloud.tech,*.sbercloud.dev"
 
 export PATH=/usr/local/bin/code:$PATH
-export PATH="/Users/amzhuravlev/.local/bin:$PATH"
-export PATH="/Users/amzhuravlev/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 
 fpath+=~/.zfunc
 poetry completions zsh > ~/.zfunc/_poetry
@@ -37,3 +37,5 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
 eval $(thefuck --alias)
+
+pfetch
