@@ -24,6 +24,8 @@ $package\
 
 $kubernetes\
 
+$custom\
+
 $line_break\
 [╰─](white)\
 $character
@@ -50,7 +52,7 @@ red = '#e78284'
 maroon = '#ea999c'
 peach = '#ef9f76'
 
-bellow = '#e5c890'
+yellow = '#e5c890'
 langs = '#e5c890'
 
 green = '#a6d189'
@@ -184,3 +186,10 @@ detect_env_vars = ['KUBECONFIG']
 context_pattern = '.*PROD.*'
 style = 'text bold bg:surface2'
 symbol = '󱃾 [ ](red bg:teal)'
+
+[custom.dotfiles]
+format = "[-](white)[](green)[󰥵 ](bold crust bg:green)[](green bg:surface2)[ $output](bold text bg:surface2)[](surface2)"
+command = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status -s | wc -l"
+when = """test "$HOME" = "$PWD" && /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status -s"""
+description = "Shows number of dotfiles that are not synced"
+detect_folders = ["~"]
