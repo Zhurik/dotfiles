@@ -8,15 +8,22 @@ add_newline = false
 format = """
 [╭─](white)\
 $directory\
+
 $git_branch\
 $git_state\
 $git_status\
+
 $docker_context\
+$helm\
+
 $python\
 $golang\
 $nodejs\
 $rust\
+$package\
+
 $kubernetes\
+
 $line_break\
 [╰─](white)\
 $character
@@ -42,11 +49,17 @@ mauve = '#ca9ee6'
 red = '#e78284'
 maroon = '#ea999c'
 peach = '#ef9f76'
-yellow = '#e5c890'
+
+bellow = '#e5c890'
+langs = '#e5c890'
+
 green = '#a6d189'
 teal = '#81c8be'
 sky = '#99d1db'
+
 sapphire = '#85c1dc'
+docker = '#85c1dc'
+
 blue = '#8caaee'
 lavender = '#babbf1'
 text = '#c6d0f5'
@@ -113,31 +126,34 @@ format = '[ \($state( $progress_current/$progress_total)\)]($style)'
 
 [golang]
 symbol = ' '
-format = '[-](white)[](yellow)[$symbol](bold crust bg:yellow)[](yellow)'
+format = '[-](white)[](langs)[$symbol](bold crust bg:langs)[](langs)'
 
 [helm]
 symbol = ' '
-style = 'base bg:blue'
-format = '[ $symbol ]($style)'
+format = '[-](white)[](docker)[$symbol](bold crust bg:docker)[](docker)'
+
+[package]
+display_private = true
+format = '[-](white)[](langs)[$version](crust bg:langs)[](langs)'
 
 [docker_context]
 # nf-fa-docker
 symbol = ' '
-format = '[-](white)[](yellow)[$symbol](bold crust bg:yellow)[](yellow)'
+format = '[-](white)[](docker)[$symbol](bold crust bg:docker)[](docker)'
 
 [nodejs]
 # nf-fa-node_js
 symbol = ' '
-format = '[-](white)[](yellow)[$symbol](bold crust bg:yellow)[](yellow)'
+format = '[-](white)[](langs)[$symbol](bold crust bg:langs)[](langs)'
 
 [python]
 # nf-fa-python
 symbol = ' '
-format = '[-](white)[](yellow)[$symbol](bold crust bg:yellow)[](yellow bg:surface2)[( $virtualenv)](text bg:surface2)[](surface2)'
+format = '[-](white)[](langs)[$symbol](bold crust bg:langs)[](langs bg:surface2)[( $virtualenv)](text bg:surface2)[](surface2)'
 
 [rust]
 symbol = '󱘗 '
-format = '[-](white)[](yellow)[$symbol](bold crust bg:yellow)[](yellow)'
+format = '[-](white)[](langs)[$symbol](bold crust bg:langs)[](langs)'
 
 [username]
 style_user = 'bold peach bg:surface2'
@@ -156,10 +172,6 @@ format = '[$localipv4 ]($style)'
 [cmd_duration]
 style = 'dimmed lavender'
 format = '[took $duration]($style)'
-
-[fill]
-symbol = '-'
-style = 'white'
 
 [kubernetes]
 symbol = '󱃾 '
