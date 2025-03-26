@@ -7,6 +7,10 @@ add_newline = false
 # Which is equivalent to
 format = """
 [╭─](white)\
+$username\
+$hostname\
+$localip\
+
 $directory\
 
 $git_branch\
@@ -158,18 +162,18 @@ symbol = '󱘗 '
 format = '[-](white)[](langs)[$symbol](bold crust bg:langs)[](langs)'
 
 [username]
-style_user = 'bold peach bg:surface2'
-format = '[$user ]($style)'
+style_user = 'bold text bg:surface2'
+format = '[](peach)[󰄛 ](bold crust bg:peach)[](peach bg:surface2)[ $user]($style)[](surface2)[-](white)'
 
 [hostname]
 ssh_symbol = ' '
-format = '[$ssh_symbol$hostname ]($style)'
-style = ' bold peach bg:surface2'
+format = '[](maroon)[$ssh_symbol](bold crust bg:maroon)[](maroon bg:surface2)[ $hostname]($style)[](surface2 bg:maroon)'
+style = 'bold text bg:surface2'
 
 [localip]
 disabled = false
-style = 'peach bg:surface2'
-format = '[$localipv4 ]($style)'
+style = 'crust bg:maroon'
+format = '[ $localipv4]($style)[](maroon)[-](white)'
 
 [cmd_duration]
 style = 'dimmed lavender'
