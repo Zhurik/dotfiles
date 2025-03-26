@@ -190,6 +190,6 @@ symbol = '󱃾 [ ](red bg:teal)'
 [custom.dotfiles]
 format = "[-](white)[](green)[󰥵 ](bold crust bg:green)[](green bg:surface2)[ $output](bold text bg:surface2)[](surface2)"
 command = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status -s | wc -l"
-when = """test "$HOME" = "$PWD" && /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status -s"""
+when = """test "$HOME" = "$PWD" && test $(/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status -s | wc -l) -gt 0"""
 description = "Shows number of dotfiles that are not synced"
 detect_folders = ["~"]
