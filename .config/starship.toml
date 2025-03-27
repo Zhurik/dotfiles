@@ -28,7 +28,7 @@ $package\
 
 $kubernetes\
 
-$custom\
+${custom.dotfiles}\
 
 $line_break\
 [╰─](white)\
