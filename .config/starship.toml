@@ -139,8 +139,9 @@ symbol = ' '
 format = '[-](white)[](docker)[$symbol](bold crust bg:docker)[](docker)'
 
 [package]
+symbol = ' '
 display_private = true
-format = '[-](white)[](langs)[$version](crust bg:langs)[](langs)'
+format = '[-](white)[](langs)[$symbol](bold crust bg:langs)[](langs bg:surface2)[ $version](text bg:surface2)[](surface2)'
 
 [docker_context]
 # nf-fa-docker
@@ -192,8 +193,7 @@ style = 'text bold bg:surface2'
 symbol = '󱃾 [ ](red bg:teal)'
 
 [custom.dotfiles]
-format = "[-](white)[](green)[󰥵 ](bold crust bg:green)[](green bg:surface2)[ $output](bold text bg:surface2)[](surface2)"
+format = "[-](white)[](green)[󰥵 ](bold crust bg:green)[](green bg:surface2)[ +$output](bold text bg:surface2)[](surface2)"
 command = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status -s | wc -l"
 when = """test "$HOME" = "$PWD" && test $(/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status -s | wc -l) -gt 0"""
 description = "Shows number of dotfiles that are not synced"
-detect_folders = ["~"]
