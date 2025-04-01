@@ -75,3 +75,6 @@ decrypt() {
     | xargs -n 2 sh -c 'echo "$0 $(echo $1 | base64 -d)"' \
     | tabulate -f rounded_grid
 }
+
+alias vpn_up="wg-quick up usa0"
+alias vpn_down="wg-quick down usa0"
