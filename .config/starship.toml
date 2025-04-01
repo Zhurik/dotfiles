@@ -29,6 +29,7 @@ $package\
 $kubernetes\
 
 ${custom.dotfiles}\
+${custom.vpn}\
 
 $line_break\
 [╰─](white)\
@@ -197,3 +198,7 @@ format = "[-](white)[](green)[󰥵 ](bold crust bg:green)[](green bg:surfa
 command = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status -s | wc -l"
 when = """test "$HOME" = "$PWD" && test $(/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME status -s | wc -l) -gt 0"""
 description = "Shows number of dotfiles that are not synced"
+
+[custom.vpn]
+when = "ls /var/run/wireguard/*.name"
+format = "[-](white)[](peach)[ ](bold crust bg:peach)[](peach)"
