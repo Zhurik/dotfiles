@@ -40,7 +40,7 @@ right_format = """
 $cmd_duration
 """
 
-continuation_prompt = '[❯❯ ](green)'
+continuation_prompt = "[❯❯ ](green)"
 
 #######
 # THEME
