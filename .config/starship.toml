@@ -189,9 +189,9 @@ style = 'text bg:surface2'
 detect_env_vars = ['KUBECONFIG']
 
 [[kubernetes.contexts]]
-context_pattern = '.*PROD.*'
-style = 'text bold bg:surface2'
-symbol = '󱃾 [ ](red bg:teal)'
+context_pattern = ".*PROD.*"
+style = "text bold bg:surface2"
+symbol = "󱃾 [ ](red bg:teal)"
 
 [custom.dotfiles]
 format = "[-](white)[](green)[󰥵 ](bold crust bg:green)[](green bg:surface2)[ +$output](bold text bg:surface2)[](surface2)"
