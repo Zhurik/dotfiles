@@ -6,7 +6,6 @@ env:
   recording: true
 
 cols: 100
-
 rows: 20
 
 repeat: 0
@@ -21,7 +20,7 @@ frameBox:
   type: null
   title: null
   style:
-    backgroundColor: '#303446'
+    backgroundColor: "#303446"
 
 watermark:
   imagePath: null
@@ -32,25 +31,16 @@ watermark:
     width: 100px
     opacity: 0.9
 
-# Cursor style can be one of
-# `block`, `underline`, or `bar`
 cursorStyle: underline
 
-# Font family
-# You can use any font that is installed on your machine
-# in CSS-like syntax
-fontFamily: "IosevkaTerm NF, FiraCode Nerd Font, Monaco, Lucida Console, Ubuntu Mono, Monospace"
+fontFamily: "IosevkaTerm NF, Monaco, Lucida Console, Ubuntu Mono, Monospace"
 
-# The size of the font
-fontSize: 14
+fontSize: 18
 
-# The height of lines
 lineHeight: 1.1
 
-# The spacing between letters
 letterSpacing: 0
 
-# Theme
 theme:
   background: "#303446"
   foreground: "#afafaf"
